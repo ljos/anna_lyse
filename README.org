@@ -1,0 +1,8 @@
+* Anna Lyse
+
+  We use Google's open source neural network framework,
+  SyntaxNet, to train a fully automatic language parser for Norwegian
+  Bokmål and Nynorsk. Using SyntaxNet, we are able to get comparable
+  results with other parsers when tagging Bokmål and Nynorsk with
+  part-of-speech. Both parsers are available and released as open
+  source.

@@ -1,0 +1,146 @@
+#+OPTIONS: H:1 texht:t toc:nil
+#+PROPERTY: dir ./build
+#+STARTUP: showall
+#+STARTUP: beamer
+#+LATEX_CLASS: beamer
+#+BEAMER_THEME: default
+#+LATEX_HEADER: \usepackage[round]{natbib}
+#+LATEX_HEADER: \usepackage{multicol}
+#+LATEX_HEADER: \usepackage{tikz}
+#+LATEX_HEADER: \usepackage{color}
+#+LATEX_HEADER: \usetikzlibrary{shapes,calc}
+#+LATEX_HEADER_EXTRA: \beamertemplatenavigationsymbolsempty
+#+BIND: org-beamer-frame-default-options "[allowframebreaks]"
+
+#+TITLE: Training Googles SyntaxNet to
+#+TITLE: understand Norwegian Bokmål and
+#+TITLE: Nynorsk
+
+
+#+AUTHOR: Bjarte Johansen
+#+AUTHOR: \texttt{bjarte.johansen@uib.no}
+
+#+DATE: <2016-11-30 Wed>
+#+LOCATION: Bergen
+
+* SyntaxNet
+
+  - A feed-forward neural network framework for syntax learning.
+
+* Part-of-speech (PoS)
+
+  - Nouns
+  - Verbs
+  - Adjectives
+  - ...
+
+* PoS example
+
+  | Noun | Verb  | Adverb | Punct |
+  |------+-------+--------+-------|
+  | Han  | ropte | høyt   | .     |
+
+
+* Nynorsk and bokmål
+
+  - Different, but similar
+
+
+* Previous Research
+** Marco, 2014
+   - Hidden Markov model (HMM)
+   - Accuracy of 97.3% for bokmål
+
+
+* Previous Research
+** Hagen, 2000
+   - The Oslo-Bergen Tagger (OBT)
+   - Morpological constraint grammar
+   - Returns all ambiguities
+   - Not suitable for machine processing
+   - Accuracy of 97.5% for bokmål
+   - 96.2 for nynorsk
+
+* Previous Research
+** Johannessen, 2009
+   - Statistical disambiguation of the OBT
+   - Uses HMM
+   - 96.56% accuracy on bokmål
+
+* Previous Research
+** Google, 2016
+   - SyntaxNet
+   - Bokmål, 97.44%
+
+* Data set
+
+  | Newspaper texts        | 82% |
+  | Government reports     |  7% |
+  | Parliament transcripts |  6% |
+  | Blogs                  |  5% |
+
+* Data set : Bokmål
+
+  |   2341 | <anf>            | 224             | interj |
+  |  11550 | <komma>          | 	  10784 | konj   |
+  |    603 | <parentes-beg>   | 	  41420 | prep   |
+  |    604 | <parentes-slutt> | 	  20543 | pron   |
+  |   2553 | <strek>          | 	   9866 | sbu    |
+  |  26809 | adj              | 	  75513 | subst  |
+  |  11998 | adv              | 	    102 | symb   |
+  |  20365 | clb              | 	    725 | ukjent |
+  |  20435 | det              | 	  50532 | verb   |
+  |   4310 | inf-merke        |                 |        |
+  |--------+------------------+-----------------+--------|
+  | Total: | 311277           | Tags:           | 19     |
+
+* Data set : Nynorsk
+
+  |   2145 | <anf>            | 234             | interj |
+  |  11452 | <komma>          | 	  11088 | konj   |
+  |    603 | <parentes-beg>   | 	  42991 | prep   |
+  |    597 | <parentes-slutt> | 	  17807 | pron   |
+  |   2481 | <strek>          | 	   9846 | sbu    |
+  |  29101 | adj              | 	  74336 | subst  |
+  |  10962 | adv              | 	    132 | symb   |
+  |  17879 | clb              | 	   1182 | ukjent |
+  |  20586 | det              | 	  45507 | verb   |
+  |   4169 | inf-merke        |                 |        |
+  |--------+------------------+-----------------+--------|
+  | Total: | 303098           | Tags            | 19     |
+  |        |                  |                 |        |
+
+
+* Training
+
+  - 50% training set
+  - 25% test set
+  - 25% verification set
+  - Randomized order of sentences
+  - Grid search over SyntaxNet parameters
+
+
+* Result
+
+    #+NAME: tab:result
+  #+CAPTION: Results of training SyntaxNet.
+  #+ATTR_LATEX: :align l | r
+  | Language | Accuracy |
+  |----------+----------|
+  | Bokmål   |   97.54% |
+  | Nynorsk  |   96.83% |
+
+
+* Problems
+  - Doesn't do tokenization
+  - Possibly dirty data
+  - difficult to analyze problems in the data and the classifier
+
+* The Future
+  - Tokenization
+  - Dependency parsing
+  - Experimentation with setup
+
+* Questions?
+
+  Thank you for listening.

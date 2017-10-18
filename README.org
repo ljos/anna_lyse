@@ -6,3 +6,13 @@
   results with other parsers when tagging Bokmål and Nynorsk with
   part-of-speech. Both parsers are available and released as open
   source.
+
+** Reference 
+   #+BEGIN_EXAMPLE
+   @article{johansen2016training,
+    title={Training Googles SyntaxNet to understand Norwegian Bokm{\aa}l and Nynorsk (short paper)},
+    author={Johansen, Bjarte},
+    journal={Norsk Informatikkonferanse (NIK)},
+    year={2016}
+   }
+   #+END_EXAMPLE
